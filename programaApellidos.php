@@ -93,15 +93,15 @@ function nombreUsuario(){
 
 /**
  * pide un numero
- * @param array $palabrasCargadas
+ * @param int $nroMin ,$nroMax
  * @return int
  */
-function ingresarNumero($palabrasCargadas){
+function ingresarNumero($nroMin,$nroMax){
     // int $cantidadPalabras
     //int $numeroIngresado
-    $cantidadPalabras = count($palabrasCargadas);
+    
     echo "Ingrese un numero: ";
-    $numeroIngresado = solicitarNumeroEntre(0,$cantidadPalabras);
+    $numeroIngresado = solicitarNumeroEntre($nroMin,$nroMax);
     return $numeroIngresado;
 }
 
@@ -160,7 +160,7 @@ do {
         case 1: 
             $nombre=nombreUsuario();
             do{
-                $numero = ingresarNumero($palabrasDisponible);
+                $numero = ingresarNumero(0,count($palabrasDisponible));
                 $palabraSelecionada=$palabrasDisponible[$numero];
                 $palUsada=palabraFueUsada($nombre,$partidasJugadas,$palabraSelecionada);
             }while($palUsada);
