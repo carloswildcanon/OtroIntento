@@ -170,7 +170,9 @@ function buscarPrimeraPartida($nomUsuario,$partidasCargadas){
         $posicion++ ;
     }
     if ($nogano){
+        echo "\n*****************************************************\n";
         echo "el jugardor ". $nomUsuario. " no gano ninguna partida\n";
+        echo "*******************************************************\n";
     }
     
 }
