@@ -91,6 +91,20 @@ function nombreUsuario(){
 }
 
 
+/**
+ * pide un numero
+ * @param array $palabrasCargadas
+ * @return int
+ */
+function ingresarNumero($palabrasCargadas){
+    // int $cantidadPalabras
+    //int $numeroIngresado
+    $cantidadPalabras = count($palabrasCargadas);
+    echo "Ingrese un numero: ";
+    $numeroIngresado = solicitarNumeroEntre(0,$cantidadPalabras);
+    return $numeroIngresado;
+}
+
 /* ****COMPLETAR***** */
 
 
@@ -103,6 +117,9 @@ function nombreUsuario(){
 
 
 //Inicialización de variables:
+
+$partidasJugadas = cargarPartidas();
+$palabrasDisponible = cargarColeccionPalabras();
 
 
 //Proceso:
