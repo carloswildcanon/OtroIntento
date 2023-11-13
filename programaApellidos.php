@@ -72,7 +72,7 @@ function seleccionarOpcion(){
         echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra.\n";
         echo "7) Agregar una palabra de 5 letras a Wordix.\n";
         echo "8) Salir.\n";
-        echo "Selecione una de las opciones anteriores:(un numero de 1-8) ";
+        echo "Selecione una de las opciones anteriores:(un numero del 1 al 8 ) ";
         $opcionElegida = trim(fgets(STDIN));
     }while(!(is_numeric($opcionElegida) && (($opcionElegida == (int)$opcionElegida) && ($opcionElegida >= 1 &&  $opcionElegida<= 8))));    
     return $opcionElegida;
