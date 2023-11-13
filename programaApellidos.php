@@ -105,6 +105,27 @@ function ingresarNumero($palabrasCargadas){
     return $numeroIngresado;
 }
 
+
+/**
+ * saber si ya se uso la palabra
+ * @param string $nomUsuario
+ * @param array $partidasCargadas
+ * @param string $palabraBuscada
+ * @return boolean
+ */
+function palabraFueUsada($nomUsuario,$partidasCargadas,$palabraBuscada){
+    //boolean $usada
+    //array $arreglo
+    $usada= false;
+    foreach($partidasCargadas as $arreglo){
+        if ($arreglo["jugador"]==$nomUsuario && $arreglo["palabraWordix"]==$palabraBuscada){
+            echo "La palabra ya fue jugada\n";
+            $usada = true;
+        }
+    }
+    return $usada;
+}
+
 /* ****COMPLETAR***** */
 
 
@@ -124,19 +145,25 @@ $palabrasDisponible = cargarColeccionPalabras();
 
 //Proceso:
 
-$partida = jugarWordix("MELON", strtolower("MaJo"));
+//$partida = jugarWordix("MELON", strtolower("MaJo"));
 //print_r($partida);
 //imprimirResultado($partida);
 
 
 
-/*
+
 do {
-    $opcion = ...;
+    $opcion = seleccionarOpcion();
 
     
     switch ($opcion) {
         case 1: 
+            $nombre=nombreUsuario();
+            do{
+                $numero = ingresarNumero($palabrasDisponible);
+                $palabraSelecionada=$palabrasDisponible[$numero];
+                $palUsada=palabraFueUsada($nombre,$partidasJugadas,$palabraSelecionada);
+            }while($palUsada);
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
 
             break;
@@ -151,5 +178,5 @@ do {
         
             //...
     }
-} while ($opcion != X);
-*/
+} while ($opcion != 8);
+
