@@ -53,6 +53,19 @@ function seleccionarOpcion(){
     return $opcionElegida;
 }
 
+
+/**
+ * pide el nombre de usuario
+ * @return string
+ */
+function nombreUsuario(){
+    //string $usuario
+    echo "Ingrese su nombre de usuario: ";
+    $usuario=strtolower(trim(fgets(STDIN)));
+    return $usuario;
+}
+
+
 /* ****COMPLETAR***** */
 
 
