@@ -126,6 +126,25 @@ function palabraFueUsada($nomUsuario,$partidasCargadas,$palabraBuscada){
     return $usada;
 }
 
+
+
+/**
+ * imprime datos de una partida 
+ * @param array $datosPartida
+ * @param int $nroPartida
+ * 
+ */
+function muestraPartida($datosPartida,$nroPartida){
+    echo "Partida Wordix ". $nroPartida. ": Palabra ". $datosPartida["palabraWordix"]. "\n";
+    echo "Jugador: ". $datosPartida["jugador"]. "\n";
+    echo "Puntaje: ". $datosPartida["puntaje"]. "\n";
+    if($datosPartida["puntaje"] != 0){
+        echo "Intento: Adivinó la palabra en ". $datosPartida["intentos"]. " intentos\n";    
+    }else{
+        echo "Intento: No adivinó la palabra\n";
+    }
+} 
+
 /* ****COMPLETAR***** */
 
 
@@ -182,10 +201,15 @@ do {
 
             break;
         case 3: 
+            $numero = ingresarNumero(1,count($partidasJugadas));
+            muestraPartida($partidasJugadas[$numero-1],$numero);
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
 
             break;
-        
+        case 4:
+
+            
+            break;
             //...
     }
 } while ($opcion != 8);
