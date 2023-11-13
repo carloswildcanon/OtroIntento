@@ -165,6 +165,7 @@ do {
                 $palUsada=palabraFueUsada($nombre,$partidasJugadas,$palabraSelecionada);
             }while($palUsada);
             $partida = jugarWordix($palabraSelecionada, $nombre);
+            array_push($partidasJugadas,$partida);
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
 
             break;
