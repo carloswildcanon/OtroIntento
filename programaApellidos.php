@@ -63,7 +63,7 @@ function cargarPartidas(){
 function seleccionarOpcion(){
     //int $opcionElegida
     do{
-        echo "-------------------------------------------  \n";
+        echo "\n-------------------------------------------  \n";
         echo "1) Jugar Wordix con una palabra elegida.\n";
         echo "2) Jugar Wordix con una palabra aleatoria.\n";
         echo "3) Mostrar una partida.\n";
@@ -74,6 +74,8 @@ function seleccionarOpcion(){
         echo "8) Salir.\n";
         echo "Selecione una de las opciones anteriores:(un numero del 1 al 8 ) ";
         $opcionElegida = trim(fgets(STDIN));
+        echo "\n----------------------------------------------";
+        echo "\n\n";
     }while(!(is_numeric($opcionElegida) && (($opcionElegida == (int)$opcionElegida) && ($opcionElegida >= 1 &&  $opcionElegida<= 8))));    
     return $opcionElegida;
 }
@@ -135,6 +137,7 @@ function palabraFueUsada($nomUsuario,$partidasCargadas,$palabraBuscada){
  * 
  */
 function muestraPartida($datosPartida,$nroPartida){
+    echo "**********************************************************************************\n";
     echo "Partida Wordix ". $nroPartida. ": Palabra ". $datosPartida["palabraWordix"]. "\n";
     echo "Jugador: ". $datosPartida["jugador"]. "\n";
     echo "Puntaje: ". $datosPartida["puntaje"]. "\n";
@@ -143,7 +146,34 @@ function muestraPartida($datosPartida,$nroPartida){
     }else{
         echo "Intento: No adivinó la palabra\n";
     }
+    echo "**********************************************************************************\n";
 } 
+
+/**
+ * Mustra la primera partida del jugador seleccionado
+ * @param string $nomUsuario
+ * @param array $partidasCargadas
+ */
+function buscarPrimeraPartida($nomUsuario,$partidasCargadas){
+    //int $posicion
+    //array $arreglo
+    //boolean $nogano
+    $nogano=true;
+    $posicion= 1;
+    foreach($partidasCargadas as $arreglo){
+        if (($arreglo["jugador"]==$nomUsuario && $arreglo["puntaje"]!= 0)){
+            
+            muestraPartida($arreglo,$posicion);
+            
+            $nogano=false;
+        }
+        $posicion++ ;
+    }
+    if ($nogano){
+        echo "el jugardor ". $nomUsuario. " no gano ninguna partida\n";
+    }
+    
+}
 
 /* ****COMPLETAR***** */
 
@@ -207,8 +237,10 @@ do {
 
             break;
         case 4:
+            echo "Ingrese el nombre del jugador: ";
+            $nombre =strtolower(trim(fgets(STDIN)));
+            buscarPrimeraPartida($nombre,$partidasJugadas);
 
-            
             break;
             //...
     }
