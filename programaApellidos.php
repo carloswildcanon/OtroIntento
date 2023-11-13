@@ -24,11 +24,36 @@ function cargarColeccionPalabras()
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
-        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS"
+        "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
+        "JAPON", "PERRO", "ZORRO", "QUINO", "AKIRA",
+        "CHILE", "URGIR", "DADOS", "JUGAR", "JUNCO",
+        "SALIR", "MANTA", "MARTE", "VENUS", "XENON"
         /* Agregar 5 palabras más */
     ];
 
     return ($coleccionPalabras);
+}
+
+/**
+ * obtiene las partidas jugadas
+ * @return array
+ */
+function cargarPartidas(){
+    $partidas=[["palabraWordix"=>"FUEGO", "jugador"=>"laura","intentos"=>2,"puntaje"=>12],
+               ["palabraWordix"=>"VERDE", "jugador"=>"diego","intentos"=>6,"puntaje"=>0],
+               ["palabraWordix"=>"PIANO", "jugador"=>"laura","intentos"=>4,"puntaje"=>12],
+               ["palabraWordix"=>"PISOS", "jugador"=>"josefina","intentos"=>5,"puntaje"=>13],
+               ["palabraWordix"=>"GOTAS", "jugador"=>"marcos","intentos"=>1,"puntaje"=>16],
+               ["palabraWordix"=>"YUYOS", "jugador"=>"laura","intentos"=>3,"puntaje"=>15],
+               ["palabraWordix"=>"XENON", "jugador"=>"olga","intentos"=>6,"puntaje"=>12],
+               ["palabraWordix"=>"CHILE", "jugador"=>"pato","intentos"=>5,"puntaje"=>10],
+               ["palabraWordix"=>"ZORRO", "jugador"=>"pedro","intentos"=>1,"puntaje"=>17],
+               ["palabraWordix"=>"GATOS", "jugador"=>"carlos","intentos"=>2,"puntaje"=>15],
+               ["palabraWordix"=>"NAVES", "jugador"=>"diego","intentos"=>3,"puntaje"=>15],
+               ["palabraWordix"=>"AKIRA", "jugador"=>"andres","intentos"=>5,"puntaje"=>10]];
+
+    return $partidas;
+
 }
 
 /**
