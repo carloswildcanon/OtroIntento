@@ -170,6 +170,14 @@ do {
 
             break;
         case 2: 
+            $nombre=nombreUsuario();
+            do{
+                $numero = array_rand($palabrasDisponible,1);
+                $palabraSelecionada=$palabrasDisponible[$numero];
+                $palUsada=palabraFueUsada($nombre,$partidasJugadas,$palabraSelecionada);
+            }while($palUsada);
+            $partida = jugarWordix($palabraSelecionada, $nombre);
+            array_push($partidasJugadas,$partida);
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
 
             break;
