@@ -177,6 +177,82 @@ function buscarPrimeraPartida($nomUsuario,$partidasCargadas){
     
 }
 
+
+
+
+function buscaDatosJugador($nomJugador,$partidasRealizadas){
+    $partidasJugador=0;
+    $puntosJugador=0;
+    $victoriasJugador=0;
+    $partidasGanadaInt1=0;
+    $partidasGanadaInt2=0;
+    $partidasGanadaInt3=0;
+    $partidasGanadaInt4=0;
+    $partidasGanadaInt5=0;
+    $partidasGanadaInt6=0;
+    foreach($partidasRealizadas as $partidaIndividual){
+        if ($partidaIndividual["jugador"] == $nomJugador){
+            $partidasJugador++;
+            $puntosJugador=$puntosJugador+$partidaIndividual["puntaje"];
+            if ($partidaIndividual["puntaje"]!=0){
+                $victoriasJugador++;
+            }
+            switch($partidaIndividual["intentos"]){
+                case 1:
+                    $partidasGanadaInt1++;
+                    break;
+                case 2:
+                    $partidasGanadaInt2++;
+                    break;
+                case 3:
+                    $partidasGanadaInt3++;
+                    break;
+                case 4:
+                    $partidasGanadaInt4++;
+                    break;
+                case 5:
+                    $partidasGanadaInt5++;
+                    break;
+                case 6:
+                    $partidasGanadaInt6++;
+                    break;
+            }
+
+        }
+
+    }
+    if ($partidasJugador != 0){
+        $porcentajeVictorias= $victoriasJugador/$partidasJugador*100;
+    }else{
+        $porcentajeVictorias=0;
+    }
+    $estadisticasJugador=["jugador" => $nomJugador,"partidas"=>$partidasJugador,
+                          "puntajeTotal" => $puntosJugador, "victorias" => $victoriasJugador,
+                          "porcentajeVictorias" => $porcentajeVictorias,"victoriasInt1"=>$partidasGanadaInt1,
+                          "victoriasInt2"=>$partidasGanadaInt2,"victoriasInt3"=>$partidasGanadaInt3,
+                          "victoriasInt4"=>$partidasGanadaInt4,"victoriasInt5"=>$partidasGanadaInt5,
+                          "victoriasInt6"=>$partidasGanadaInt6];
+
+    return $estadisticasJugador;
+}
+
+function imprimirEstadisticas($arregloEstadisticas){
+    echo "\n*************************************\n";
+    echo "Jugador : ". $arregloEstadisticas["jugador"]. "\n";
+    echo "Partidas : ". $arregloEstadisticas["partidas"]. "\n";
+    echo "Puntaje Total : ". $arregloEstadisticas["puntajeTotal"]. "\n";
+    echo "Victorias : ". $arregloEstadisticas["victorias"]. "\n";
+    echo "Porcentaje Victorias : ". $arregloEstadisticas["porcentajeVictorias"]. "%\n";
+    echo "Adivinadas : \n";
+    echo "    Intento 1: ". $arregloEstadisticas["victoriasInt1"]. "\n";
+    echo "    Intento 2: ". $arregloEstadisticas["victoriasInt2"]. "\n";
+    echo "    Intento 3: ". $arregloEstadisticas["victoriasInt3"]. "\n";
+    echo "    Intento 4: ". $arregloEstadisticas["victoriasInt4"]. "\n";
+    echo "    Intento 5: ". $arregloEstadisticas["victoriasInt5"]. "\n";
+    echo "    Intento 6: ". $arregloEstadisticas["victoriasInt6"]. "\n";
+    echo "****************************************\n";
+}
+
 /* ****COMPLETAR***** */
 
 
@@ -189,7 +265,7 @@ function buscarPrimeraPartida($nomUsuario,$partidasCargadas){
 
 
 //Inicialización de variables:
-
+$estadisticasJugador=[];
 $partidasJugadas = cargarPartidas();
 $palabrasDisponible = cargarColeccionPalabras();
 
