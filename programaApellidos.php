@@ -160,11 +160,13 @@ function buscarPrimeraPartida($nomUsuario,$partidasCargadas){
     //boolean $nogano
     $nogano=true;
     $posicion= 1;
+    $entrarLaprimeraVez = true;
     foreach($partidasCargadas as $arreglo){
         if (($arreglo["jugador"]==$nomUsuario && $arreglo["puntaje"]!= 0)){
-            
-            muestraPartida($arreglo,$posicion);
-            
+            if ($entrarLaprimeraVez){
+                muestraPartida($arreglo,$posicion);
+            }
+            $entrarLaprimeraVez =false;
             $nogano=false;
         }
         $posicion++ ;
@@ -321,6 +323,9 @@ do {
 
             break;
             //...
+        case 5:
+
+            break;
     }
 } while ($opcion != 8);
 
